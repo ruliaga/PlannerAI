@@ -1,0 +1,29 @@
+QMainWindow, QWidget { background: #f3f4f6; color: #1f2937;
+                       font-family: "Segoe UI", "Inter", sans-serif; font-size: 13px; }
+
+#card { background: #ffffff; border-radius: 10px; }
+#cardTitle { font-size: 14px; font-weight: 600; color: #111827; }
+
+#kpiTile { background: #ffffff; border-radius: 10px; border: 1px solid #e5e7eb; }
+#kpiValue { font-size: 18px; font-weight: 700; color: #111827; }
+#kpiLabel { font-size: 11px; color: #6b7280; text-transform: uppercase; }
+
+#chatPanel { background: #ffffff; border-left: 1px solid #e5e7eb; }
+#chatTitle { font-size: 15px; font-weight: 600; }
+#chatStatus { font-size: 11px; color: #6b7280; }
+#chatStatus[busy="true"] { color: #2563eb; }
+
+#quickBtn { font-size: 11px; padding: 5px 10px; border-radius: 14px;
+            border: 1px solid #d1d5db; background: #f9fafb; }
+#quickBtn:hover { background: #eef2ff; border-color: #c7d2fe; }
+
+#chatLog { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;
+           padding: 8px; }
+
+QLineEdit { border: 1px solid #d1d5db; border-radius: 8px; padding: 7px 10px;
+            background: #ffffff; }
+QLineEdit:focus { border-color: #2563eb; }
+QPushButton { border: none; border-radius: 8px; padding: 7px 12px;
+              background: #2563eb; color: #fff; font-weight: 600; }
+QPushButton:disabled { background: #93c5fd; }
+QPushButton#quickBtn { background: #f9fafb; color: #1f2937; font-weight: 400; }

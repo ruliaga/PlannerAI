@@ -1,0 +1,24 @@
+prod_planner_desktop/
+├── requirements.txt
+├── config.yaml
+├── run.py                        # точка входа
+├── build.spec                    # PyInstaller
+├── core/                         # ядро планирования (без изменений)
+│   ├── loader.py
+│   ├── bom.py
+│   ├── routing.py
+│   ├── scheduler.py
+│   ├── analytics.py
+│   └── service.py
+├── agent/
+│   ├── tools.py                  # tool-схемы + диспетчер
+│   ├── llm.py                    # клиент OpenAI / Ollama
+│   └── worker.py                 # QThread-обёртка для агента
+├── ui/
+│   ├── main_window.py            # QMainWindow: сплиттер дашборд/чат
+│   ├── dashboard.py              # 3 карточки с графиками
+│   ├── chat_panel.py             # чат-панель
+│   ├── charts.py                 # рендер Gantt/Util/Output
+│   └── style.qss                 # тёмная/светлая тема
+└── storage/
+    └── db.py                     # SQLite: история чата, снимки
