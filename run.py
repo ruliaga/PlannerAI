@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import sys
 from pathlib import Path
 from PySide6.QtWidgets import QApplication

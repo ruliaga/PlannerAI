@@ -14,9 +14,7 @@ llm:
   temperature: 0.2
   max_steps: 8
   
-  # Ваши ключи Yandex Cloud
-  yc_api_key: "AQVN3Avuzwpq-lWJMLcgCNCLteDZomdJanq0niV9"
-  yc_folder_id: "b1g445gcc12vkbeu2iqv"
+ 
 
 routing_polymer:
   - "Резка"
