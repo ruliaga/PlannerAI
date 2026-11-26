@@ -2,6 +2,31 @@
 from __future__ import annotations
 import pandas as pd
 from pathlib import Path
+# core/loader.py — добавления (остальной код без изменений)
+import sys
+
+def _find_file(filename: str | Path) -> Path:
+    """Ищет файл рядом с программой, в корне проекта и внутри onefile-сборки."""
+    p = Path(filename)
+    if p.exists():
+        return p
+    base = Path(getattr(sys, "_MEIPASS", ROOT_DIR))   # PyInstaller: данные в _MEIPASS
+    p_root = base / p
+    if p_root.exists():
+        return p_root
+    p_root2 = ROOT_DIR / p
+    if p_root2.exists():
+        return p_root2
+    raise FileNotFoundError(f"Файл не найден: {filename} (искал в {base} и {ROOT_DIR})")
+
+def load_metal_rs(path: str | Path) -> pd.DataFrame:
+    """РС проката: Код, Номенклатура, Ресурсная спецификация, Материал, Ед.изм., Количество (кг)."""
+    file_path = _find_file(path)
+    df = pd.read_excel(file_path, sheet_name=0)
+    df = df.rename(columns={"Код": "code", "Номенклатура": "item", "Ресурсная спецификация": "spec",
+                            "Материал": "material", "Ед.изм.": "uom", "Количество": "qty"})
+    return df[["code", "item", "spec", "material", "uom", "qty"]]
+
 
 # Определяем корень проекта (папка, где лежит run.py и config.yaml)
 ROOT_DIR = Path(__file__).resolve().parent.parent

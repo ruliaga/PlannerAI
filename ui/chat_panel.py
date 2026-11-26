@@ -55,11 +55,13 @@ class ChatPanel(QWidget):
 
         self._restore_history()
 
-    # ---------- отправка ----------
+    # --------- отправка ----------
+
     def send(self, text: str):
         text = (text or "").strip()
         if not text or self.worker is not None:
             return
+        db.add_msg("user", text)
         self._append("user", text)
         self.input.clear()
         self._busy(True)
@@ -72,7 +74,7 @@ class ChatPanel(QWidget):
 
     def _on_done(self, res: dict):
         self._busy(False)
-        db.add_msg("user", self.input.text())  # уже добавлено в send — пропустим
+        db.add_msg("assistant", res.get("text", ""))
         db.add_msg("assistant", res.get("text", ""))
         self._append("assistant", res.get("text", ""))
         if res.get("charts"):
